@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './quiz_brain.dart';
+
+QuizBrain quizBrain = new QuizBrain();
 
 void main() => runApp(Quizzler());
 
@@ -40,13 +43,13 @@ class _QuizPageState extends State<QuizPage> {
   //   true,
   // ];
 
-  List<Question> questionBank = [
-    Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
-    Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
-    Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
-  ];
+  // List<Question> questionBank = [
+  //   Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
+  //   Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
+  //   Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
+  // ];
 
-  int questionNumber = 0;
+  // int questionNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +64,8 @@ class _QuizPageState extends State<QuizPage> {
             child: Center(
               child: Text(
                 // 'This is where the question text will go.',
-                questionBank[questionNumber].questionText,
+                // quizBrain.questionBank[questionNumber].questionText,
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -89,7 +93,8 @@ class _QuizPageState extends State<QuizPage> {
 
                 // bool correctAnswer = answers[questionNumber];
                 bool correctAnswer =
-                    questionBank[questionNumber].questionAnswer;
+                    // quizBrain.questionBank[questionNumber].questionAnswer;
+                    quizBrain.getQuestionAnswer();
 
                 if (correctAnswer == true) {
                   print('Correct');
@@ -113,13 +118,13 @@ class _QuizPageState extends State<QuizPage> {
                   });
                 }
 
-                setState(() {
-                  if (questionNumber == questionBank.length - 1) {
-                    return;
-                  } else {
-                    questionNumber++;
-                  }
-                });
+                // setState(() {
+                //   // if (questionNumber == quizBrain.questionBank.length - 1) {
+                //   //   return;
+                //   // } else {
+                //   questionNumber++;
+                //   // }
+                // });
               },
             ),
           ),
@@ -139,7 +144,8 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked false.
                 bool correctAnswer =
-                    questionBank[questionNumber].questionAnswer;
+                    // quizBrain.questionBank[questionNumber].questionAnswer;
+                    quizBrain.getQuestionAnswer();
 
                 if (correctAnswer == false) {
                   print('Correct');
@@ -163,9 +169,9 @@ class _QuizPageState extends State<QuizPage> {
                   });
                 }
 
-                setState(() {
-                  questionNumber++;
-                });
+                // setState(() {
+                //   questionNumber++;
+                // });
               },
             ),
           ),
